@@ -47,10 +47,10 @@ export const peopleService = {
     return true;
   },
 
-  getVisiblePeople: async (userId?: string, isAdmin?: boolean): Promise<Person[]> => {
+  getVisiblePeople: async (userId?: string, isAdmin?: boolean, isVisitor?: boolean): Promise<Person[]> => {
     const people = await peopleService.getAll();
-    // Admin sees all people, visitor sees all people (for privacy feature simplification)
-    if (!userId || isAdmin) return people;
+    // Admin and visitor see all people, regular users see only visible people
+    if (!userId || isAdmin || isVisitor) return people;
     return people.filter(p => p.visibleTo.includes(userId) || p.visibleTo.includes('all'));
   },
 };

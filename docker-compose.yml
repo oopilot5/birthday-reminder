@@ -11,6 +11,7 @@ services:
     environment:
       - NODE_ENV=production
       - DB_DIR=/app/data
+      - HOSTNAME=0.0.0.0
     restart: unless-stopped
     volumes:
       - ./data:/app/data

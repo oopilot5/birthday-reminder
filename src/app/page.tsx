@@ -32,16 +32,14 @@ export default function Home() {
       // Load total people count
       const allPeople = await peopleService.getAll();
       setTotalPeople(allPeople.length);
-      // Load birthdays if user is logged in
-      if (currentUser) {
+      // Load birthdays for all users (guests can view, only admin can manage)
         await loadBirthdays();
-      }
     };
     init();
   }, [currentUser, router]);
 
   const loadBirthdays = async () => {
-    const people = await peopleService.getVisiblePeople(currentUser?.id, isAdmin);
+    const people = await peopleService.getVisiblePeople(currentUser?.id, isAdmin, isVisitor);
     const upcoming = getUpcomingBirthdays(people, 90);
     setUpcomingBirthdays(upcoming);
   };
