@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  birthday-reminder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: birthday-reminder
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DB_DIR=/app/data
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
