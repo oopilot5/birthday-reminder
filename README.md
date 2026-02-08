@@ -120,15 +120,16 @@ npm start
 MIT
 
 ## 本地部署方案
-```bash
-已完成容器化配置。以下是本地部署方案：
+
 创建的文件
 1. Dockerfile - 多阶段构建，优化镜像大小
 2. docker-compose.yml - 简化部署管理
 3. .dockerignore - 排除不需要的文件
 4. 更新 next.config.ts - 启用 standalone 输出模式
+
 部署方式
 方式一：使用 Docker Compose（推荐）
+```bash
 # 构建并启动
 docker-compose up -d
 # 查看日志
@@ -137,6 +138,7 @@ docker-compose logs -f
 docker-compose down
 # 重新构建
 docker-compose up -d --build
+```
 访问 http://localhost:3000
 
 方式二：使用本地 Node.js
@@ -147,5 +149,3 @@ npm start
 配置说明
 - 端口: 默认 3000，可在 docker-compose.yml 中修改
 - 重启策略: unless-stopped（除非手动停止，否则自动重启）
-- 数据: 当前数据存储在浏览器 LocalStorage，无需服务端持久化，开了 /app/data 挂载没有用。
-```
