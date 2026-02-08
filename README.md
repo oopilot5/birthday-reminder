@@ -106,14 +106,6 @@ npm start
 
 - 成年女性不显示年龄
 - 访客只有只读权限
-- 数据保存在浏览器本地，不会上传到服务器
-- 可配置人员可见范围（visibleTo 字段）
-
-## 注意事项
-
-1. 数据存储在浏览器的 LocalStorage 中，清除浏览器数据会丢失所有信息
-2. 适合个人或小团队内部使用
-3. 如需多用户同步功能，需要后端支持
 
 ## 许可证
 
@@ -142,9 +134,11 @@ docker-compose up -d --build
 访问 http://localhost:3000
 
 方式二：使用本地 Node.js
+```bash
 npm install
 npm run build
 npm start
+```
 
 配置说明
 - 端口: 默认 3000，可在 docker-compose.yml 中修改
